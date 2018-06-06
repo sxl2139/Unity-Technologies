@@ -1,0 +1,17 @@
+Question: Suppose that the data was extremely large, and did not fit in memory. What problems would
+this cause? How could these problems be solved?
+
+What problems would this cause?
+1.Results in out of memory exception
+
+How could these problems be solved?
+This problem can be solved by storing the data in the external data storage. 
+When the external data storage also becomes full we can split the data into many data storage. 
+We can divide the data into certain specific paramters like 
+	a. Order of Appearance - divide data in order of appearance.
+	 When the memory gets full one data storage, it is then carried to next data storage.
+	b. Hash Value - As data comes in, the hash of the data is found. 
+	It is then stored in the data storage which is decided using the formula hash % number of machines.
+	c. Use Look Up Table - Data is arbitrarily broken up and a lookup table is implemented to
+	identify which machine holds a piece of data.Later, get index from look up table to decide which data 
+	storage should be used to store and retrieve data.

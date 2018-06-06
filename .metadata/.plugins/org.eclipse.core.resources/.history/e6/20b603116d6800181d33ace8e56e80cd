@@ -1,0 +1,49 @@
+package Section1;
+import static org.junit.Assert.*;
+
+import org.junit.Before;
+import org.junit.FixMethodOrder;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.MethodSorters;
+
+import junitparams.JUnitParamsRunner;
+
+@RunWith(JUnitParamsRunner.class)
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
+public class ReverseStringTestCases {
+	private ReverseString reverseString;
+
+	@Before
+	public void setUp() {
+		reverseString = new ReverseString();
+	}
+
+	@Test
+	public void test(){
+		assertEquals("d", reverseString.reverseString("d"));
+
+		assertEquals(2, reverseString.reverseString(""));
+		
+		assertEquals(0, reverseString.reverseString("   "));		
+		
+		assertEquals(1, reverseString.reverseString("test reverse"));
+
+		assertEquals(0, reverseString.reverseString("odd"));		
+		
+		assertEquals(0, reverseString.reverseString("even"));
+		
+		assertEquals(1, reverseString.reverseString("7"));
+				
+		assertEquals(1, reverseString.reverseString("~-=* @#$%$#%"));
+		
+		assertEquals(0, reverseString.reverseString("bbbbbbbbbb"));
+
+		assertEquals(1, reverseString.reverseString("ababa"));		
+		
+		assertEquals(0, reverseString.reverseString("2189763456"));
+		
+		assertEquals(0, reverseString.reverseString("space at the end    "));
+
+	}
+}

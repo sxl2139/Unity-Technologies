@@ -1,0 +1,50 @@
+package Section1;
+package Section1;
+import static org.junit.Assert.*;
+
+import org.junit.Before;
+import org.junit.FixMethodOrder;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.MethodSorters;
+
+import junitparams.JUnitParamsRunner;
+
+@RunWith(JUnitParamsRunner.class)
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
+public class QueueTestCases {
+	private ReverseString reverseString;
+
+	@Before
+	public void setUp() {
+		reverseString = new ReverseString();
+	}
+
+	@Test
+	public void test() {
+		assertEquals(null, reverseString.reverseString(null));
+
+		assertEquals("", reverseString.reverseString(""));
+		
+		assertEquals("   ", reverseString.reverseString("   "));		
+		
+		assertEquals("esrever tset", reverseString.reverseString("test reverse"));
+
+		assertEquals("ddo", reverseString.reverseString("odd"));		
+		
+		assertEquals("neve", reverseString.reverseString("even"));
+		
+		assertEquals("7", reverseString.reverseString("7"));
+				
+		assertEquals("%#$%$#@ *=-~", reverseString.reverseString("~-=* @#$%$#%"));
+		
+		assertEquals("bbbbbbbbbb", reverseString.reverseString("bbbbbbbbbb"));
+
+		assertEquals("ababa", reverseString.reverseString("ababa"));		
+		
+		assertEquals("79812", reverseString.reverseString("21897"));
+		
+		assertEquals("    dne eht ta ecaps", reverseString.reverseString("space at the end    "));
+
+	}
+}

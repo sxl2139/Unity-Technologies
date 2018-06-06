@@ -1,0 +1,92 @@
+package section4;
+
+import java.util.*;
+
+public class GroupingKeyValuePairs {
+
+    static HashMap<String, ArrayList<String>> map;
+    
+    public GroupingKeyValuePairs() {
+    		map = new HashMap<>();
+	}
+	
+	public static void main(String args[]){  
+		Scanner sc=new Scanner(System.in);  
+		  
+		String input = "";
+		System.out.println("/***Input:***/\n");
+		System.out.println("Enter number of key value pairs that you want to enter.\n");
+		try {
+			int pairsCount = sc.nextInt();
+			int i=0;
+			String[] pairsArray = new String[pairsCount];
+			System.out.println("Enter " + pairsCount + " key value pairs.\n");
+			while(pairsCount > 0) {
+				input = sc.next();
+				pairsArray[i] = input;
+				i++;
+				pairsCount--;
+			}
+			groupPairs(pairsArray);
+			System.out.println("\n/***Result:***/");
+			System.out.println(printResult());
+		}
+		catch (Exception e) {
+			System.out.println("Group pairs operation could not be performed. Please try again.");
+		}
+		finally {
+			sc.close();
+		}
+	}
+	
+	/*groups key value pairs based on key
+	 * @Parameters: pairsArray -> input string array
+	 * returns grouped pairs in the form of string
+	 * Time Complexity: O(n) where n is the total number of key,value pair string
+	 * 					All hash map operation take O(1)
+	 * Space Complexity: O(n) where n is the total number of key,value pair string*/
+	public static String groupPairs (String[] pairsArray) {
+		try {
+			map = new HashMap<>();
+			for(int i=0; i<pairsArray.length; i++) {
+				String input = pairsArray[i];
+				String[] inputArray = input.split(",");
+				if(inputArray.length > 2) {
+					throw new Exception();
+				}
+				String key = inputArray[0], value = inputArray[1];
+				if(!map.containsKey(key)) {
+					map.put(key, new ArrayList<>());
+				}
+				ArrayList<String> temp = map.get(key);
+				temp.add(value);
+				map.put(key, temp);
+			}
+			return printResult();
+		}
+		catch (Exception e) {
+			return "Group pairs operation could not be performed. Please try again.";
+		}
+	}
+	
+	/*groups key value pairs based on key
+	 * @Parameters: pairsArray -> input string array
+	 * returns grouped pairs in the form of string
+	 * Time Complexity: O(n) where n is the total number of key,value pair string
+	 * 					All hash map operation take O(1)
+	 * Space Complexity: O(n) where n is the total number of key,value pair string*/
+	public static String printResult () {
+		StringBuilder res = new StringBuilder();
+		for (Map.Entry<String, ArrayList<String>> entry : map.entrySet()) {
+			String key = entry.getKey();
+			res.append("\nKey: "+key+"\n");
+		    ArrayList<String> value = entry.getValue();
+		    res.append("Values:");
+		    for(String aString : value){
+		    	res.append("\n"+aString);
+		    }
+		}
+		return res.toString();
+	}
+
+}

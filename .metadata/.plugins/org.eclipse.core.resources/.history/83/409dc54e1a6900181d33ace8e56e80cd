@@ -1,0 +1,30 @@
+package section4;
+import static org.junit.Assert.*;
+
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+
+import junitparams.JUnitParamsRunner;
+import section1.Queue;
+
+@RunWith(JUnitParamsRunner.class)
+public class GroupingKeyValuePairsTestCases {
+	private GroupingKeyValuePairs groupPair;
+
+	@Before
+	public void setUp() {
+		groupPair = new GroupingKeyValuePairs();
+	}
+
+	@Test
+	public void test() {
+		String[] testData = {};
+		String res = "/***Result:***/\n Key: 23\n Values:23";
+		assertEquals(expectedResult(testData), groupPair.Dequeue());
+	}
+	
+	public String expectedResult(String[] testData) {
+		
+	}
+}

@@ -1,0 +1,49 @@
+package Section1;
+import static org.junit.Assert.*;
+
+import org.junit.Before;
+import org.junit.FixMethodOrder;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.MethodSorters;
+
+import junitparams.JUnitParamsRunner;
+
+@RunWith(JUnitParamsRunner.class)
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
+public class QueueTestCases {
+	private Queue queue;
+
+	@Before
+	public void setUp() {
+		queue = new Queue();
+	}
+
+	@Test
+	public void test() {
+		assertEquals(null, queue.enqueue(null));
+
+		assertEquals("", queue.enqueue(""));
+		
+		assertEquals("   ", queue.enqueue("   "));		
+		
+		assertEquals("esrever tset", queue.enqueue("test reverse"));
+
+		assertEquals("ddo", queue.enqueue("odd"));		
+		
+		assertEquals("neve", queue.enqueue("even"));
+		
+		assertEquals("7", queue.enqueue("7"));
+				
+		assertEquals("%#$%$#@ *=-~", queue.enqueue("~-=* @#$%$#%"));
+		
+		assertEquals("bbbbbbbbbb", queue.enqueue("bbbbbbbbbb"));
+
+		assertEquals("ababa", queue.enqueue("ababa"));		
+		
+		assertEquals("79812", queue.enqueue("21897"));
+		
+		assertEquals("    dne eht ta ecaps", queue.enqueue("space at the end    "));
+
+	}
+}

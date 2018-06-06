@@ -1,0 +1,130 @@
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+
+public class leetcode {
+	public static void main(String[] args) {
+		System.out.println(reverseString("sdsdcc"));
+//		Set<String> set = new HashSet<String>();
+//		int[] arr = {1,1,1,2,3};
+//		String[] str = {"A", "B", "E","F","A"};
+//		int prev = arr[0];
+//		set.add(str[0]);
+//		int count = 0;
+//		for(int i=1; i<arr.length; i++) {
+//			if(arr[i] != prev || i==arr.length-1) {
+//				//check first portion
+//				if(!set.contains("A")  && !set.contains("B") && !set.contains("C")) {
+//					count++;
+//				}
+//				//check middle portion
+//				if((!set.contains("D")  && !set.contains("E") && !set.contains("F")) || (!set.contains("E")  && !set.contains("F") && !set.contains("G")))
+//				{
+//					count++;
+//				}
+//				//check last portion
+//				if(!set.contains("H")  && !set.contains("J") && !set.contains("K")) {
+//					count++;
+//				}
+//				set = new HashSet<String>();
+//			}
+//			set.add(str[i]);
+//			prev = arr[i];
+//		}
+//		
+//		//check first portion
+//		if(!set.contains("A")  && !set.contains("B") && !set.contains("C")) {
+//			count++;
+//		}
+//		//check middle portion
+//		if((!set.contains("D")  && !set.contains("E") && !set.contains("F")) || (!set.contains("E")  && !set.contains("F") && !set.contains("G")))
+//		{
+//			count++;
+//		}
+//		//check last portion
+//		if(!set.contains("H")  && !set.contains("J") && !set.contains("K")) {
+//			count++;
+//		}
+//		
+//		System.out.println(count);
+	}
+	
+	/*Reverses string
+	 * @Parameters: input -> string
+	 * @output -> reversed string*/
+	public static String reverseString(String input) {
+		//base cases
+		if(input == null || input.length() == 0 || input.length() == 1) {
+			return input;
+		}
+		//swap characters at low and high indices to get a reversed string
+		int low=0, high=input.length()-1;
+		char[] inputArray = input.toCharArray();
+		while(low<high) {
+			char temp = inputArray[low];
+			inputArray[low] = inputArray[high];
+			inputArray[high] = temp;
+			low++; high--;
+		}
+        return String.valueOf(inputArray);
+	}
+	
+	List<Integer> lengthEachScene2(List<Character> inputList) {
+		List<Integer> res = new ArrayList<Integer>();
+		HashMap<Character, ArrayList<Integer>> map = new HashMap<Character, ArrayList<Integer>>();
+		
+		for(int i=0; i<inputList.size(); i++) {
+			if(map.get(inputList.get(i)) == null) {
+				map.put(inputList.get(i), new ArrayList<Integer>());
+			}
+			map.get(inputList.get(i)).add(i);
+		}
+		
+		ArrayList<Integer> temp  = map.get(inputList.get(0));
+		int end = temp.get(temp.size()-1);
+		for (int i = 1; i < inputList.size(); i++) {
+			ArrayList<Integer> temp1  = map.get(inputList.get(i));
+		}
+		
+		return res;
+	}
+	
+	// METHOD SIGNATURE BEGINS, THIS METHOD IS REQUIRED
+	List<Integer> lengthEachScene(List<Character> inputList) {
+		// WRITE YOUR CODE HERE
+		List<Integer> res = new ArrayList<Integer>();
+		boolean repeat = false;
+		int[] arr = new int[26];
+		for (int i = 0; i < inputList.size(); i++) {
+			int index = inputList.get(i) - 'a';
+			if(arr[index] != 0) repeat = true;
+			arr[index] = i;
+		}
+
+		int start = 0;
+		int end = arr[inputList.get(0) - 'a'];
+		int i = 0;
+		while (i <= end) {
+			char ch = inputList.get(i);
+			int index = ch - 'a';
+			if (arr[index] >= end) {
+				end = arr[index];
+			} 
+				if(i == end) {
+					res.add(end - start + 1);
+					start = i+1;
+					if(i<inputList.size()-1)
+						end = arr[inputList.get(start) - 'a'];
+					else
+						break;
+				}i++;
+		}
+//		if(res.size() == 0 && repeat == false) {
+//			for (int j = 0; j < inputList.size(); j++) {
+//				res.add(1);
+//			}
+//		}
+		System.out.println(res);
+		return res;
+	}
+}

@@ -1,0 +1,39 @@
+package Section1;
+import static org.junit.Assert.*;
+
+import org.junit.Before;
+import org.junit.FixMethodOrder;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.MethodSorters;
+
+import junitparams.JUnitParamsRunner;
+
+@RunWith(JUnitParamsRunner.class)
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
+public class QueueTestCases {
+	private Queue queue;
+
+	@Before
+	public void setUp() {
+		queue = new Queue();
+	}
+
+	@Test
+	public void test() {
+		assertEquals(0, queue.queueSize);
+		queue.Enqueue(1);
+		assertEquals(1, queue.queueSize);
+		queue.Enqueue(4);
+		queue.Enqueue(5);
+		queue.Enqueue(9);
+		assertEquals(4, queue.queueSize);
+		assertEquals(9, queue.Dequeue());
+		assertEquals(3, queue.queueSize);
+		assertEquals(5, queue.Dequeue());
+		assertEquals(4, queue.Dequeue());
+		assertEquals(1, queue.queueSize);
+		queue.Enqueue(12);
+		assertEquals(2, queue.queueSize);
+	}
+}

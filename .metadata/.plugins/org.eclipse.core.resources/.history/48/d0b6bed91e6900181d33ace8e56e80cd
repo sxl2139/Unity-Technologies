@@ -1,0 +1,82 @@
+package section4;
+
+import java.util.*;
+
+public class GroupingKeyValuePairs {
+
+    static HashMap<String, ArrayList<String>> map;
+    
+    public GroupingKeyValuePairs() {
+    		map = new HashMap<>();
+	}
+	
+	public static void main(String args[]){  
+		Scanner sc=new Scanner(System.in);  
+		  
+		String input = "";
+		ArrayList<String> strList = new ArrayList<String>();
+		System.out.println("/***Input:***/\n");
+		System.out.println("Enter number of key value pairs that you want to enter.\n");
+		try {
+			int pairsCount = sc.nextInt();
+			System.out.println("Enter " + pairsCount + " key value pairs.\n");
+			while(pairsCount > 0) {
+				input = sc.next();
+				String[] inputArray = input.split(",");
+				groupPairs(inputArray[0], inputArray[1], map);
+				pairsCount--;
+			}
+			System.out.println("\n/***Result:***/");
+			System.out.println(printResult());
+		}
+		catch (Exception e) {
+			System.out.println("Group pairs operation could not be performed. Please try again.");
+		}
+		finally {
+			sc.close();
+		}
+	}
+	
+	public static void callFromUnitCases(int num, String[] arr) {
+		try {
+			map = new HashMap<>();
+			for(int i=0; i<num; i++) {
+				String input = arr[i];
+				String[] inputArray = input.split(",");
+				groupPairs(inputArray[0], inputArray[1], map);
+			}
+		}
+		catch (Exception e) {
+			System.out.println("Group pairs operation could not be performed. Please try again.");
+		}
+	}
+	
+	public static void groupPairs (String key, String value, HashMap<String, ArrayList<String>> map) {
+		try {
+			if(!map.containsKey(key)) {
+				map.put(key, new ArrayList<>());
+			}
+			ArrayList<String> temp = map.get(key);
+			temp.add(value);
+			map.put(key, temp);
+		}
+		catch (Exception e) {
+			System.out.println("Group pairs operation could not be performed. Please try again.");
+		}
+	}
+	
+	public static String printResult () {
+		StringBuilder res = new StringBuilder();
+		for (Map.Entry<String, ArrayList<String>> entry : map.entrySet()) {
+			String key = entry.getKey();
+			res.append("\nKey: "+key+"\n");
+		    ArrayList<String> value = entry.getValue();
+		    res.append("Values:");
+		    for(String aString : value){
+		    	res.append(aString);
+		    }
+		}
+		return res.toString();
+	}
+
+}

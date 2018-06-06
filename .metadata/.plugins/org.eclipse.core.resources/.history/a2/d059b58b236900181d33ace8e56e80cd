@@ -1,0 +1,52 @@
+package section4;
+import java.util.Comparator;
+import java.util.PriorityQueue;
+
+public class StatsCollector {
+	PriorityQueue<Integer> minHeap;
+    PriorityQueue<Integer> maxHeap;
+    int count = 0;
+    long total = 0;
+	
+    public StatsCollector() {
+    	minHeap = new PriorityQueue<Integer>();
+        maxHeap = new PriorityQueue<Integer>(new Comparator<Integer>() {
+
+			@Override
+			public int compare(Integer o1, Integer o2) {
+				return o2-o1;
+			}
+        	
+		}); 
+	}
+
+	public void pushValue(int responseTimeMs) {
+		count++;
+		total += (long) responseTimeMs;
+		
+		if(maxHeap.isEmpty() || responseTimeMs <= maxHeap.peek()) {
+            maxHeap.add(responseTimeMs);
+        } else {
+            minHeap.add(responseTimeMs);
+        }
+        if(minHeap.size() >= maxHeap.size()+2) {
+            maxHeap.add(minHeap.remove());
+        } else if(maxHeap.size() >= minHeap.size()+2){ 
+            minHeap.add(maxHeap.remove());
+        }
+	}
+
+	public double getMedian() {
+		if(minHeap.size() == maxHeap.size()) {
+            return (double)(minHeap.peek()+maxHeap.peek())/2;
+        } else if(minHeap.size() > maxHeap.size()) {
+            return minHeap.peek();
+        } else {
+            return maxHeap.peek();
+        }
+	}
+
+	public long getAverage() {
+		return total/count;
+	}
+}

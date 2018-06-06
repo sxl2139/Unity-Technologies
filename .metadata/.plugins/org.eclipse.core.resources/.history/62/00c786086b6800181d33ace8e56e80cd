@@ -1,0 +1,49 @@
+package Section1;
+import static org.junit.Assert.*;
+
+import org.junit.Before;
+import org.junit.FixMethodOrder;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.MethodSorters;
+
+import junitparams.JUnitParamsRunner;
+
+@RunWith(JUnitParamsRunner.class)
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
+public class ReverseStringTestCases {
+	private ReverseString reverseString;
+
+	@Before
+	public void setUp() {
+		reverseString = new ReverseString();
+	}
+
+	@Test
+	public void test(){
+		assertEquals(1, reverseString.reverseString(null));
+
+		assertEquals(2, reverseString.reverseString(""));
+		
+		assertEquals(0, reverseString.reverseString("   "));		
+		
+		assertEquals(1, reverseString.reverseString("test reverse"));
+
+		assertEquals(0, reverseString.reverseString(""));		
+		
+		assertEquals(0, reverseString.reverseString(""));
+		
+		assertEquals(1, reverseString.reverseString(""));
+				
+		assertEquals(1, reverseString.reverseString(""));
+		
+		assertEquals(0, reverseString.reverseString(""));
+
+		assertEquals(1, reverseString.reverseString(""));		
+		
+		assertEquals(0, reverseString.reverseString(""));
+		
+		assertEquals(0, reverseString.reverseString(""));
+
+	}
+}

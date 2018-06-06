@@ -1,0 +1,22 @@
+package section4;
+
+import static org.junit.Assert.assertEquals;
+
+import org.junit.Before;
+import org.junit.Test;
+
+import section1.Queue;
+
+public class StatsCalculatorTestCases {
+	private StatsCollector statsCalculator;
+
+	@Before
+	public void setUp() {
+		statsCalculator = new StatsCollector();
+	}
+
+	@Test
+	public void test() {
+		assertEquals(-1, queue.Dequeue());
+	}
+}

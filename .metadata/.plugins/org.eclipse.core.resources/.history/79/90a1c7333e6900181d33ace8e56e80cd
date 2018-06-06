@@ -1,0 +1,70 @@
+package section4;
+import java.util.Comparator;
+import java.util.PriorityQueue;
+public class StatsCollector {
+	PriorityQueue<Integer> minHeap;
+    PriorityQueue<Integer> maxHeap;
+    int count = 0;
+    long total = 0;
+	
+    public StatsCollector() {
+    		minHeap = new PriorityQueue<Integer>();
+        maxHeap = new PriorityQueue<Integer>(new Comparator<Integer>() {
+
+			@Override
+			public int compare(Integer o1, Integer o2) {
+				return o2-o1;
+			}
+        	
+		}); 
+	}
+    
+    /*pushes response time into heap
+	 * @Parameters: input parameter -> integer responseTimeMs
+	 * returns nothing*/
+	public void pushValue(int responseTimeMs) {
+		count++;
+		total += (long) responseTimeMs;
+		
+		if(maxHeap.isEmpty() || responseTimeMs <= maxHeap.peek()) {
+            maxHeap.add(responseTimeMs);
+        } else {
+            minHeap.add(responseTimeMs);
+        }
+        if(minHeap.size() >= maxHeap.size()+2) {
+            maxHeap.add(minHeap.remove());
+        } else if(maxHeap.size() >= minHeap.size()+2){ 
+            minHeap.add(maxHeap.remove());
+        }
+	}
+
+	/*calculates median of data in queue
+	 * @Parameters: pairsArray -> input string array
+	 * returns median
+	 * Time Complexity: O(2n) => O(n) where n is the total number of key,value pair string
+	 * 					All hash map operation take O(1)
+	 * Space Complexity: O(n) where n is the total number of key,value pair string*/
+	public double getMedian() {
+		try {
+			if(minHeap.size() == maxHeap.size()) {
+	            return (double)(minHeap.peek()+maxHeap.peek())/2;
+	        } else if(minHeap.size() > maxHeap.size()) {
+	            return minHeap.peek();
+	        } else {
+	            return maxHeap.peek();
+	        }
+			}
+			catch (Exception e) {
+				return -1;
+			}
+	}
+
+	public long getAverage() {
+		try {
+			return total/count;
+		}
+		catch (Exception e) {
+			return -1;
+		}
+	}
+}

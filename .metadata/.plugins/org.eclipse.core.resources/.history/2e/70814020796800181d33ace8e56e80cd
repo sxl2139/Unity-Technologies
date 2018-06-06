@@ -1,0 +1,44 @@
+package Section1;
+
+import java.util.Stack;
+
+public class Queue {
+	/*stack1 holds elements in the form of queue*/
+	Stack<Integer> stack1;
+	int queueSize = 0;
+    public Queue() {
+        stack1 = new Stack<Integer>();
+    }
+    
+    /*inserts new integer at the tail of queue
+     * @Parameters: x -> input integer
+     * Output -> void*/
+    public void Enqueue(int x) {
+    		/*stack2 is used as a helper to maintain head of the queue at the top of stack1*/
+        Stack<Integer> stack2 = new Stack<Integer>();
+        while(!stack1.isEmpty()) {
+            stack2.push(stack1.pop());
+        }
+        /*maintain head of the queue at the top of stack1*/
+        stack1.push(x);
+        while(!stack2.isEmpty()) {
+            stack1.push(stack2.pop());
+        }
+        if(!stack1.isEmpty()) {
+        		queueSize++;
+        }
+    }
+    
+    public int Dequeue() {
+    		/*returns head of the queue*/
+	    	if(!stack1.isEmpty()) {
+	    		queueSize--;
+	    }
+        return stack1.pop();
+    }
+    
+    public boolean empty() {
+    		/*checks if queue is empty*/
+        return stack1.isEmpty();
+    }
+}

@@ -1,0 +1,52 @@
+package section4;
+import static org.junit.Assert.*;
+
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+
+import junitparams.JUnitParamsRunner;
+
+@RunWith(JUnitParamsRunner.class)
+public class GroupingKeyValuePairsTestCases {
+	private GroupingKeyValuePairs groupPair;
+
+	@Before
+	public void setUp() {
+		groupPair = new GroupingKeyValuePairs();
+	}
+
+	@Test
+	public void test() {
+		int num = 0;
+		String[] testData = {};
+		String expectedResult = "";
+		assertEquals(expectedResult, groupPair.groupPairs(testData));
+		
+		num = 2;
+		String[] testData1 = {"key1,val", "key2,val2"};
+		expectedResult = "\nKey: key1\n" + 
+				"Values:val\n" + 
+				"Key: key2\n" + 
+				"Values:val2";
+		GroupingKeyValuePairs.callFromUnitCases(num, testData1);
+		actualResult = GroupingKeyValuePairs.printResult();
+		assertEquals(expectedResult, actualResult);
+		
+		num = 2;
+		String[] testData2 = {"key1,val", "key2,val2", "key2,val3"};
+		expectedResult = "\nKey: key1\n" + 
+				"Values:val\n" + 
+				"Key: key2\n" + 
+				"Values:val2";
+		GroupingKeyValuePairs.callFromUnitCases(num, testData2);
+		actualResult = GroupingKeyValuePairs.printResult();
+		assertEquals(expectedResult, actualResult);
+		
+		String[] testData3 = {"", "key2,val2", "key2,val3"};
+		expectedResult = "Group pairs operation could not be performed. Please try again.";
+		GroupingKeyValuePairs.callFromUnitCases(num, testData3);
+		actualResult = GroupingKeyValuePairs.printResult();
+		assertEquals(expectedResult, actualResult);
+	}
+}

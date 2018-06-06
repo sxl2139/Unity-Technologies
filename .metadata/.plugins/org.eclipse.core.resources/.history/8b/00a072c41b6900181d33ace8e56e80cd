@@ -1,0 +1,34 @@
+package section4;
+import static org.junit.Assert.*;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Scanner;
+
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+
+import junitparams.JUnitParamsRunner;
+import section1.Queue;
+
+@RunWith(JUnitParamsRunner.class)
+public class GroupingKeyValuePairsTestCases {
+	private GroupingKeyValuePairs groupPair;
+
+	@Before
+	public void setUp() {
+		groupPair = new GroupingKeyValuePairs();
+	}
+
+	@Test
+	public void test() {
+		String[] testData = {"key1,val", "key2,val2"};
+		String res = "/***Result:***/\n Key: 23\n Values:23";
+		assertEquals(res, groupPair.printResult(map));
+	}
+	
+	public String expectedResult(String[] testData) {
+		
+	}
+}

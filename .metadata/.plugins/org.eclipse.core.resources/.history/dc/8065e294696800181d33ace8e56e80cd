@@ -1,0 +1,61 @@
+package Section1;
+import static org.junit.Assert.*;
+
+import org.junit.Before;
+import org.junit.FixMethodOrder;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.MethodSorters;
+
+import junitparams.JUnitParamsRunner;
+
+@RunWith(JUnitParamsRunner.class)
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
+public class ReverseStringTestCases {
+	private ReverseString reverseString;
+
+	@Before
+	public void setUp() {
+		reverseString = new ReverseString();
+	}
+
+	@Test
+	public void test(){
+		int [] arr1 = {2,2,-4,-4};
+		assertEquals(1, prob3.countRepeated(arr1));
+
+		int [] arr2 = {2,2,6,6};
+		assertEquals(2, prob3.countRepeated(arr2));
+		
+		int [] arr3 = {3,0,3,10};
+		assertEquals(0, prob3.countRepeated(arr3));		
+		
+		int [] arr4 = {3,3,4,4};
+		assertEquals(1, prob3.countRepeated(arr4));
+
+		int [] arr5 = {3,3,3,3};
+		assertEquals(0, prob3.countRepeated(arr5));		
+		
+		int [] arr6 = {1,2,3,4};
+		assertEquals(0, prob3.countRepeated(arr6));
+		
+		int [] arr7 = {5,5,8,8};
+		assertEquals(1, prob3.countRepeated(arr7));
+				
+		int [] arr8 = {6,6,5,5};
+		assertEquals(1, prob3.countRepeated(arr8));
+		
+		int [] arr9 = {3,3,-4,-4};
+		assertEquals(0, prob3.countRepeated(arr9));
+
+		int [] arr10 = {2,2,2,2};
+		assertEquals(1, prob3.countRepeated(arr10));		
+		
+		int [] arr11 = {1,1,7,7};
+		assertEquals(0, prob3.countRepeated(arr11));
+		
+		int [] arr12 = {-1,-2,-3,-4};
+		assertEquals(0, prob3.countRepeated(arr12));
+
+	}
+}

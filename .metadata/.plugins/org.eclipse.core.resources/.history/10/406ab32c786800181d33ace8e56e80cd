@@ -1,0 +1,56 @@
+package Section1;
+import static org.junit.Assert.*;
+
+import org.junit.Before;
+import org.junit.FixMethodOrder;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.MethodSorters;
+
+import junitparams.JUnitParamsRunner;
+
+@RunWith(JUnitParamsRunner.class)
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
+public class QueueTestCases {
+	private Queue queue;
+
+	@Before
+	public void setUp() {
+		queue = new Queue();
+	}
+
+	@Test
+	public void test() {
+		assertEquals(0, queue.queueSize);
+		queue.Enqueue(1);
+		assertEquals(1, queue.queueSize);
+		queue.Enqueue(4);
+		queue.Enqueue(5);
+		queue.Enqueue(9);
+		assertEquals(4, queue.queueSize);
+		assertEquals(9, queue.Dequeue());
+		assertEquals(3, queue.queueSize);
+		assertEquals("", queue.Enqueue(""));
+		
+		assertEquals("   ", queue.Enqueue("   "));		
+		
+		assertEquals("esrever tset", queue.Enqueue("test reverse"));
+
+		assertEquals("ddo", queue.Enqueue("odd"));		
+		
+		assertEquals("neve", queue.Enqueue("even"));
+		
+		assertEquals("7", queue.Enqueue("7"));
+				
+		assertEquals("%#$%$#@ *=-~", queue.Enqueue("~-=* @#$%$#%"));
+		
+		assertEquals("bbbbbbbbbb", queue.Enqueue("bbbbbbbbbb"));
+
+		assertEquals("ababa", queue.Enqueue("ababa"));		
+		
+		assertEquals("79812", queue.Enqueue("21897"));
+		
+		assertEquals("    dne eht ta ecaps", queue.Enqueue("space at the end    "));
+
+	}
+}

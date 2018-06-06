@@ -1,0 +1,5 @@
+Question: Suppose that the data was extremely large, and did not fit in memory. What problems would
+this cause? How could these problems be solved?
+
+What problems would this cause?
+1.Results in memory full exception

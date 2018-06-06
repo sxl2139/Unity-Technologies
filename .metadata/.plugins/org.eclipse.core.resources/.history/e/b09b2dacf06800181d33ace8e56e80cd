@@ -1,0 +1,47 @@
+package section4;
+
+import java.util.*;
+
+public class GroupingKeyValuePairs {
+	public static void main(String args[]){  
+		Scanner sc=new Scanner(System.in);  
+	    HashMap<String, ArrayList> map = new HashMap<>();
+		  
+		String input = "";
+		boolean continueLopp = true;
+		System.out.println("/***Input:***/\n");
+		System.out.println("Enter number of key value pairs that you want to enter.\n");
+		int pairsCount = sc.nextInt();
+		System.out.println("Enter " + pairsCount + " key value pairs.\n");
+		while(pairsCount > 0) {
+			input = sc.next();
+			String[] inputArray = input.split(",");
+			groupPairs(inputArray[0], inputArray[1], map);
+			pairsCount--;
+		}
+		System.out.println("/***Result:***/\n");
+		printResult(map);
+	}
+	
+	public static void groupPairs (String key, String value, HashMap<String, ArrayList> map) {
+		if(!map.containsKey(key)) {
+			map.put(key, new ArrayList<>());
+		}
+		ArrayList<String> temp = map.get(key);
+		temp.add(value);
+		map.put(key, temp);
+	}
+	
+	public static void printResult (HashMap<String, ArrayList<String>> map) {
+		for (Map.Entry<String, ArrayList<String>> entry : map.entrySet()) {
+			String key = entry.getKey();
+			System.out.println(key+":");
+		    ArrayList<String> value = entry.getValue();
+		    for(String aString : value){
+		        System.out.println(aString+"\n");
+		    }
+
+		}
+	}
+
+}

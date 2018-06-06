@@ -1,0 +1,26 @@
+package section4;
+
+import java.util.*;
+
+public class GroupingKeyValuePairs {
+	public static void main(String args[]){  
+		Scanner sc=new Scanner(System.in);  
+	     
+		  
+		int pairsCount = 0;
+		boolean endLoop = false;
+		while(!endLoop) {
+			System.out.println("Which operations do you want to perform?");
+			System.out.println("1 -> Enter Key,Value\n 2 -> Exit");
+			int num = sc.nextInt();
+			switch(num) {
+				case 1: System.out.println("Enter number of key,value pairs that you would like to enter.");
+						pairsCount = sc.nextInt();
+						break;
+				default: endLoop = true;
+						 break;
+			}
+		}
+	}  
+
+}

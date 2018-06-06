@@ -1,0 +1,28 @@
+package section4;
+
+import static org.junit.Assert.assertEquals;
+
+import org.junit.Before;
+import org.junit.Test;
+
+public class StatsCalculatorTestCases {
+	private StatsCollector statsCalculator;
+
+	@Before
+	public void setUp() {
+		statsCalculator = new StatsCollector();
+	}
+
+	@Test
+	public void test() {
+		statsCalculator.pushValue(3);
+		assertEquals(3, statsCalculator.getAverage());
+		assertEquals("3.0", Double.toString(statsCalculator.getMedian()));
+		
+		statsCalculator.pushValue(3);
+		statsCalculator.pushValue(3);
+		statsCalculator.pushValue(3);
+		assertEquals("3", Double.toString(statsCalculator.getAverage()));
+		assertEquals("3", Double.toString(statsCalculator.getMedian()));
+	}
+}

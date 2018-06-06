@@ -1,0 +1,26 @@
+package section4;
+
+import java.util.*;
+
+public class GroupingKeyValuePairs {
+	public static void main(String args[]){  
+		Scanner sc=new Scanner(System.in);  
+	     
+		System.out.println("Enter number of key,value pairs that you would like to enter.");  
+		int pairsCount=sc.nextInt(); 
+		while(true) {
+			System.out.println("Which operations do you want to perform?");
+			System.out.println("1 -> Enter Key,Value\n 2 -> Exit");
+			switch(num) {
+			
+			}
+		}
+		System.out.println("Enter your name");  
+		String name=sc.next();  
+		System.out.println("Enter your fee");  
+		double fee=sc.nextDouble();  
+		   System.out.println("Rollno:"+rollno+" name:"+name+" fee:"+fee);  
+		   sc.close();  
+	}  
+
+}
